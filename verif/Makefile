@@ -1,4 +1,4 @@
-src=lvl
+src=lvl1
 testname=mac_tb
 top      = tb_mac_top
 verbosity=UVM_MEDIUM
