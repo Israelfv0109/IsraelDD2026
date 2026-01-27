@@ -1,0 +1,6 @@
+#e1(22Jan2026:21:34:33): source ./xcelium.d/env.d/env.history.22Jan2026_21_34_33
+s1(22Jan2026:21:34:33):  xrun -f list.f -l ./logs/comp.log +define+tb_booth_multiplier+ -access +rwc -timescale 1ns/1ps -sv 
+#e2(22Jan2026:21:35:21): source ./xcelium.d/env.d/env.history.22Jan2026_21_35_21
+s2(22Jan2026:21:35:21):  xrun -f list.f -l ./logs/comp.log +define+tb_booth_multiplier+ -access +rwc -timescale 1ns/1ps -sv 
+#e3(22Jan2026:21:41:18): source ./xcelium.d/env.d/env.history.22Jan2026_21_41_18
+s3(22Jan2026:21:41:18):  xrun -f list.f -l ./logs/comp.log +define+tb_booth_multiplier+ -access +rwc -timescale 1ns/1ps -sv 

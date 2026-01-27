@@ -1,4 +1,4 @@
-testname = alfacen_noaxi_base_test
+testname = tb_booth_multiplier
 logs     = ./logs
 defines  = XCELIUM
 verb     = UVM_MEDIUM
