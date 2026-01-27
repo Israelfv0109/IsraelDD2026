@@ -1,4 +1,6 @@
 # rtl
-../rtl/booth_rtl.sv
+../rtl/lvl3.sv
+../rtl/lvl2.sv
+../rtl/lvl1.sv
 # verification
-./booth_tb.sv
+./mac_tb.sv

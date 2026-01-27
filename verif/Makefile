@@ -1,6 +1,6 @@
-src=booth
-testname=booth_tb
-top      = tb_booth_multiplier
+src=lvl
+testname=mac_tb
+top      = tb_mac_top
 verbosity=UVM_MEDIUM
 .DEFAULT_GOAL := help
 
