@@ -1,0 +1,1 @@
+-debug "typical" --relax "tb_mac_top" 

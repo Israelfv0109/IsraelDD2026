@@ -1,3 +1,10 @@
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/israel/IsraelDD2026/rtl/lvl3_rtl.sv" into library work
+INFO: [VRFC 10-311] analyzing module booth_fsm
+INFO: [VRFC 10-311] analyzing module booth_datapath
+INFO: [VRFC 10-311] analyzing module adder_40bit
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/israel/IsraelDD2026/rtl/lvl2_rtl.sv" into library work
+INFO: [VRFC 10-311] analyzing module booth_multiplier
+INFO: [VRFC 10-311] analyzing module accumulator_unit
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/israel/IsraelDD2026/rtl/lvl1_rtl.sv" into library work
 INFO: [VRFC 10-311] analyzing module mac_top
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/israel/IsraelDD2026/verif/mac_tb.sv" into library work

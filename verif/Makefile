@@ -6,7 +6,9 @@ verbosity=UVM_MEDIUM
 
 list: # target
 	@echo "# rtl" > list.f
-	@echo "../rtl/${src}_rtl.sv" >> list.f
+	@echo "../rtl/lvl3_rtl.sv" >> list.f
+	@echo "../rtl/lvl2_rtl.sv" >> list.f
+	@echo "../rtl/lvl1_rtl.sv" >> list.f
 	@echo "# verification" >> list.f
 	@echo "./${testname}.sv" >> list.f
 	
