@@ -1,7 +1,0 @@
-Running: xsim.dir/work.tb_mac_top/xsimk -runall -simmode gui -wdb work.tb_mac_top.wdb -simrunnum 0 -socket 51947
-Design successfully loaded
-Design Loading Memory Usage: 195096 KB (Peak: 195152 KB)
-Design Loading CPU Usage: 670 ms
-Simulation completed
-Simulation Memory Usage: 277092 KB (Peak: 334364 KB)
-Simulation CPU Usage: 670 ms
