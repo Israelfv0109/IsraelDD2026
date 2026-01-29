@@ -1,59 +1,81 @@
-src=lvl1
-testname=mac_tb
-top      = tb_mac_top
-verbosity=UVM_MEDIUM
+# ==============================================================================
+#  MASTER MAKEFILE - ISRAEL DD 2026
+#  Soporta: Xilinx Vivado (Local) y Cadence Xcelium (Server)
+# ==============================================================================
+
+# --- VARIABLES COMUNES ---
+testname  = mac_tb
+top       = tb_mac_top
+verbosity = UVM_MEDIUM
+logs      = ./logs
+
+# --- TARGET DEFAULT (Ayuda) ---
 .DEFAULT_GOAL := help
 
-list: # target
+list:
+	@mkdir -p $(logs)
+	@echo "# Generando list.f para RTL y Verificacion..."
 	@echo "# rtl" > list.f
 	@echo "../rtl/lvl3_rtl.sv" >> list.f
 	@echo "../rtl/lvl2_rtl.sv" >> list.f
 	@echo "../rtl/lvl1_rtl.sv" >> list.f
 	@echo "# verification" >> list.f
 	@echo "./${testname}.sv" >> list.f
-	
+
+# ==============================================================================
+#  FLUJO VIVADO
+# ==============================================================================
 ana: list
 	xvlog -sv -f list.f -L uvm
+
 elab: ana
 	xelab -debug typical --relax ${top}
+
 sim: elab
 	xsim work.${top} -runall
 
 waves:
 	xsim work.${top}.wdb -autoloadwcfg -gui &
 
-sim_gui: elab
-	xsim work.${top} -runall -gui
-cov: 
-	xcrg -report_format html -dir xsim.covdb
-sim_uvm: elab
-	xsim work.${top} "UVM_TESTNAME=${testname}"
-	
-sim_uvm_gui: elab
-	xsim work.${top} -gui "UVM_TESTNAME=${testname}"
-help:
-	@echo ""
-	@echo "==== Basic Vivado Compile/Simulator makefile ======"
-	@echo " Targets:"
-	@echo " ana    --> Analyzes the HDL file with xvlog command"
-	@echo " elab   --> Elaborates de design with xelab command"
-	@echo " sim    --> Simulates the design with xsim command"
-	@echo " clean  --> Clean support files"
-	@echo " help   --> this help menu =)"
-	@echo ""
-clean:
-	rm -rf xvlog* xelab* xsim* webtalk* tr_db* ana elab sim .Xil vivado* work*
-	rm -rf xsim.dir
-
-
-logs     = ./logs
-defines  = XCELIUM
-verb     = UVM_MEDIUM
-
+# ==============================================================================
+#  FLUJO CADENCE (PARA EL SERVIDOR - ESTUDIANTES2)
+# ==============================================================================
+# Flags de compilación para Xcelium (xrun)
 compile_switches = -f list.f -l ${logs}/comp.log +define+${testname}+ -access +rwc -timescale 1ns/1ps -sv
-compile_switches_uvm = -f list.f -uvmhome CDNS-1.2 -uvm -l ${logs}/comp.log +define+${testname}+ +UVM_TESTNAME=${testname} +UVM_VERBOSITY=${verb} -access +rwc -timescale 1ns/1ps -sv
-compile_switches_pa = -f list.f -uvmhome CDNS-1.2 -uvm -l ${logs}/comp.log +define+${defines}+ +UVM_TESTNAME=${testname} +UVM_VERBOSITY=${verb} -access +rwc -timescale 1ns/1ps -sv -define UPF -covoverwrite -lps_1801 ../power/chip_wrapper.upf -lps_dbc -lps_relax_1801 -lps_verbose 5 -lps_common_options
 
-csim:
+# Simulación Pura (RTL)
+csim: list
 	xrun ${compile_switches}
 
+# Simulación con Interfaz Gráfica (SimVision)
+csim_gui: list
+	xrun ${compile_switches} -gui
+
+# Abrir SimVision solo para ver ondas guardadas
+waves_c:
+	simvision shm_db &
+
+# ==============================================================================
+#  UTILIDADES
+# ==============================================================================
+help:
+	@echo ""
+	@echo "==== MASTER MAKEFILE COMMANDS ===="
+	@echo " LOCAL (Vivado):"
+	@echo "   make sim       -> Compila y corre simulación en terminal"
+	@echo "   make waves     -> Abre las ondas en Vivado GUI"
+	@echo ""
+	@echo " SERVIDOR (Cadence):"
+	@echo "   make csim      -> Compila y corre simulación (xrun)"
+	@echo "   make csim_gui  -> Corre xrun con interfaz gráfica"
+	@echo "   make waves_c   -> Abre SimVision para ver ondas grabadas"
+	@echo ""
+	@echo " COMUNES:"
+	@echo "   make clean     -> Borra basura de ambos simuladores"
+	@echo ""
+
+clean:
+	# Limpieza Vivado
+	rm -rf xvlog* xelab* xsim* webtalk* tr_db* ana elab sim .Xil vivado* work* xsim.dir
+	# Limpieza Cadence
+	rm -rf xrun* waves* xcelium* logs shm_db .sim* .svm* *.diag uvm_test_name.svh list.f
