@@ -67,6 +67,7 @@ module booth_datapath #(parameter DATA_WIDTH = 16) (
             Q <= q_in;
             q_prev <= 1'b0;
         end else if (op_sel && shift) begin
+
             // Lógica Radix-4: Miramos 3 bits y desplazamos 2
             case ({Q[1], Q[0], q_prev})
                 3'b001, 3'b010: {A, Q, q_prev} <= $signed({A + M, Q, q_prev}) >>> 2;
@@ -75,6 +76,13 @@ module booth_datapath #(parameter DATA_WIDTH = 16) (
                 3'b100: {A, Q, q_prev} <= $signed({A - (M <<< 1), Q, q_prev}) >>> 2;
                 default: {A, Q, q_prev} <= $signed({A, Q, q_prev}) >>> 2;
             endcase
+            
+            /*// Cálculo y Desplazamiento en un solo paso seguro
+            case ({Q[0], q_prev})
+                2'b01: {A, Q, q_prev} <= $signed({A + M, Q, q_prev}) >>> 1;
+                2'b10: {A, Q, q_prev} <= $signed({A - M, Q, q_prev}) >>> 1;
+                default: {A, Q, q_prev} <= $signed({A, Q, q_prev}) >>> 1;
+            endcase*/
         end
     end
 
