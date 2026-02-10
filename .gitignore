@@ -8,6 +8,15 @@ xsim.dir/
 *.vdi
 *.str
 *.vcd
+# Basura de Vivado
+*.log
+*.jou
+*.pb
+*.wdb
+*.vcd
+.Xil/
+xsim.dir/
+verif/vivado_work/logs/
 
 # --- Basura de Cadence/Xcelium (Servidor) ---
 xcelium.d/
