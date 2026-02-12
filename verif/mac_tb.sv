@@ -18,7 +18,8 @@ module tb_mac_top;
     .m_in     (_if.m_in), 
     .q_in     (_if.q_in),
     .product  (_if.product),
-    .ready    (_if.ready)
+    .ready    (_if.ready),
+    .clr_acc  (1'b0)
   );
 
   initial begin

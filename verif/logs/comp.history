@@ -1,0 +1,12 @@
+#e1(03Feb2026:18:35:56): source ./xcelium.d/env.d/env.history.03Feb2026_18_35_56
+s1(03Feb2026:18:35:56):  xrun -f list.f -l ./logs/comp.log +define+mac_tb -access +rwc -timescale 1ns/1ps -sv -gui 
+#e2(03Feb2026:18:44:55): source ./xcelium.d/env.d/env.history.03Feb2026_18_44_55
+s2(03Feb2026:18:44:55):  xrun -f list.f -l ./logs/comp.log +define+mac_tb -access +rwc -timescale 1ns/1ps -sv -gui 
+#e3(03Feb2026:18:49:31): source ./xcelium.d/env.d/env.history.03Feb2026_18_49_31
+s3(03Feb2026:18:49:31):  xrun -f list.f -l ./logs/comp.log +define+mac_tb -access +rwc -timescale 1ns/1ps -sv -gui 
+#e4(03Feb2026:19:17:17): source ./xcelium.d/env.d/env.history.03Feb2026_19_17_17
+s4(03Feb2026:19:17:17):  xrun -f list.f -l ./logs/comp.log +define+mac_tb -access +rwc -timescale 1ns/1ps -sv -gui 
+#e5(03Feb2026:20:22:33): source ./xcelium.d/env.d/env.history.03Feb2026_20_22_33
+s5(03Feb2026:20:22:33):  xrun -f list.f -l ./logs/comp.log +define+mac_tb -access +rwc -timescale 1ns/1ps -sv 
+#e6(03Feb2026:20:26:11): source ./xcelium.d/env.d/env.history.03Feb2026_20_26_11
+s6(03Feb2026:20:26:11):  xrun -f list.f -l ./logs/comp.log +define+mac_tb -access +rwc -timescale 1ns/1ps -sv 
