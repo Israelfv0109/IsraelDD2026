@@ -1,12 +1,12 @@
 `timescale 1ns/1ps
 
-`define MAC_BASIC_FLOW_TEST
+//`define MAC_BASIC_FLOW_TEST
 // `define MAC_SIGNED_MIX_TEST
 // `define MAC_ACCUM_LOOP_TEST
 // `define MAC_ZERO_OPS_TEST
 // `define MAC_MAX_MIN_TEST
 // `define MAC_RST_MID_OP_TEST
-// `define MAC_CORNERS_TEST
+ `define MAC_CORNERS_TEST
 
 `include "mac_pkg.sv"
 //`include "mac_if.sv"
