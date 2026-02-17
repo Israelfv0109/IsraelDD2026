@@ -9,16 +9,12 @@ module mac_cov (
     input logic ready
 );
 
-    // ==========================================================
-    // 1. COVERGROUP PARA EL MAC
-    // ==========================================================
+    // COVERGROUP PARA EL MAC
     covergroup cg_mac @(posedge clk iff rst_n);
         option.per_instance = 1;
         option.name = "Cobertura_Funcional_MAC";
 
-        // ------------------------------------------------
-        // Cobertura de Operandos (Signos y Casos Esquina)
-        // ------------------------------------------------
+        // Cobertura de Operandos (Signos y Casos Esquina) CORNERS DE PKG
         cp_a: coverpoint operand_a {
             bins zero     = {0};
             bins pos_small = {[1 : 127]};
@@ -31,13 +27,15 @@ module mac_cov (
 
         cp_b: coverpoint operand_b {
             bins zero     = {0};
-            bins pos      = {[1 : 32767]};
-            bins neg      = {[-32768 : -1]};
+            bins pos_small = {[1 : 127]};
+            bins pos_large = {[128 : 32767]};
+            bins neg_small = {[-128 : -1]};
+            bins neg_large = {[-32768 : -129]};
+            bins max_pos   = {32767};
+            bins max_neg   = {-32768};
         }
 
-        // ------------------------------------------------
         // Cobertura de la FSM (Booth)
-        // ------------------------------------------------
         cp_fsm: coverpoint state {
             bins IDLE   = {2'b00};
             bins LOAD   = {2'b01};
@@ -46,10 +44,7 @@ module mac_cov (
             illegal_bins otros = default; 
         }
 
-        // ------------------------------------------------
-        // COMBINACIONES (CROSS COVERAGE) - ¡Lo más importante!
-        // ------------------------------------------------
-        // ¿Probamos multiplicar Negativo x Negativo? ¿Positivo x Cero?
+        // COMBINACIONES (CROSS COVERAGE)
         a_x_b: cross cp_a, cp_b;
 
     endgroup
@@ -58,17 +53,15 @@ module mac_cov (
     cg_mac cg_inst = new();
 
     // Reporte al final
-    final begin
+    /*final begin
         $display("\n=== REPORTE DE COBERTURA FUNCIONAL (XCELIUM) ===");
         $display("Cobertura Operando A: %.1f%%", cg_inst.cp_a.get_coverage());
         $display("Cobertura FSM: %.1f%%", cg_inst.cp_fsm.get_coverage());
         $display("Cobertura Total: %.1f%%", cg_inst.get_coverage());
         $display("==============================================\n");
-    end
+    end*/
 
 endmodule
-
-// Al final de ../mac_cov.sv
 
 bind mac_top mac_cov u_mac_cov (
     .clk(clk),

@@ -4,7 +4,7 @@ package mac_pkg;
         rand bit signed [15:0] a, b;
         constraint data_range { a inside {[-32768:32767]}; b inside {[-32768:32767]}; }
     endclass
-
+    
     // Clase para Sanity (Test 1, 2, 3)
     class random_gen_small extends random_gen;
         constraint data_range { a inside {[-50:50]}; b inside {[-10:10]}; }
