@@ -52,8 +52,8 @@ module mac_tb;
         if_i.initialize();
 
         // 1. Primera ráfaga (50 cálculos)
-        $display("[TB] Iniciando primera ráfaga de 50 acumulaciones...");
-        repeat(5000) begin
+        $display("[TB] Iniciando primera ráfaga de 5millones de acumulaciones...");
+        repeat(500000) begin
             rand_a = $random; rand_b = $random;
             expected_acc = expected_acc + (rand_a * rand_b);
             if_i.compute(rand_a, rand_b);
@@ -67,8 +67,8 @@ module mac_tb;
         expected_acc = 0;
 
         // 3. Segunda ráfaga (Otras 50)
-        $display("[TB] Segunda ráfaga tras reset...");
-        repeat(5000) begin
+        $display("[TB] Segunda ráfaga tras reset de otros 5 millones");
+        repeat(500000) begin
             rand_a = $random; rand_b = $random;
             expected_acc = expected_acc + (rand_a * rand_b);
             if_i.compute(rand_a, rand_b);
