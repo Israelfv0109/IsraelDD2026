@@ -11,8 +11,8 @@ package mac_pkg;
     // Clase para Corners (Test 4, 5) Distribución Ponderada
     class random_gen_corners extends random_gen;
         constraint c_zeros { 
-           a dist {0:=20, `MAC_MAX_POS:=20, `MAC_MAX_NEG:=20, [1:`MAC_MAX_POS-1]:/20, [`MAC_MAX_NEG+1:-1]:/20};
-            b dist {0:=20, `MAC_MAX_POS:=20, `MAC_MAX_NEG:=20, [1:`MAC_MAX_POS-1]:/20, [`MAC_MAX_NEG+1:-1]:/20};
+           a dist {0:=10, `MAC_MAX_POS:=10, `MAC_MAX_NEG:=10,  [1:`MAC_SMALL_POS_LIMIT]:/30, [`MAC_SMALL_NEG_LIMIT:-1]:/30,[`MAC_SMALL_POS_LIMIT+1:`MAC_MAX_POS-1]:/5, [`MAC_MAX_NEG+1:`MAC_SMALL_NEG_LIMIT-1]:/5};
+           b dist {0:=10, `MAC_MAX_POS:=10, `MAC_MAX_NEG:=10,  [1:`MAC_SMALL_POS_LIMIT]:/30, [`MAC_SMALL_NEG_LIMIT:-1]:/30,[`MAC_SMALL_POS_LIMIT+1:`MAC_MAX_POS-1]:/5, [`MAC_MAX_NEG+1:`MAC_SMALL_NEG_LIMIT-1]:/5};
 	    //el diagonal distribuye en partes iguales
         }
     endclass

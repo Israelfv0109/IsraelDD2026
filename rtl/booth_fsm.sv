@@ -30,8 +30,8 @@ module booth_fsm (
             CALC: begin
                 op_sel = 1'b1;
                 shift  = 1'b1;
-                // Condición Radix-4: DATA_WIDTH / 2
-                next_state = (bit_cnt == (`MAC_DATA_WIDTH/2)-1) ? DONE : CALC;
+                // Condición Radix-8, MAC_DATA_WIDTH/3 = (32/3) = 10 enteros, contar de 0-10, 11 iteraciones para radix-8
+                next_state = (bit_cnt == (`MAC_DATA_WIDTH/3)) ? DONE : CALC;
             end
             DONE: begin
                 ready = 1'b1;

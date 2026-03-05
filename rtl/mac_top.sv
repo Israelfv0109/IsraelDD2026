@@ -6,7 +6,7 @@
 module mac_top (
     input logic clk, rst_n, start,
     input logic signed [`MAC_DATA_WIDTH-1:0] m_in, q_in,
-    output logic signed  [`MAC_ACC_WIDTH:0] product,
+    output logic signed  [`MAC_ACC_WIDTH-1:0] product,
     output logic ready
 );
     logic signed [`MAC_ACC_WIDTH-1:0] internal_product;
