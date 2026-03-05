@@ -2,7 +2,7 @@
 
 # --- RTL ---
 ../../rtl/accumulator_unit.sv
-../../rtl/adder_40bit.sv
+../../rtl/mac_adder.sv
 ../../rtl/booth_datapath.sv
 ../../rtl/booth_fsm.sv
 ../../rtl/booth_multiplier.sv
@@ -17,3 +17,6 @@
 
 # --- Testbench ---
 ../mac_tb.sv
+
+# --- Testbench Wishbone ---
+../../dv/tb_wishbone.sv

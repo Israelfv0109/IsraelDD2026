@@ -8,10 +8,6 @@
 ../../rtl/booth_multiplier.sv
 ../../rtl/mac_top.sv
 
-# --- RTL Wishbone ---
-../../rtl/wb_master.sv
-../../rtl/wb_mac.sv
-
 # --- Interface ---
 ../mac_if.sv
 
