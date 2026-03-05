@@ -17,6 +17,3 @@
 
 # --- Testbench ---
 ../mac_tb.sv
-
-# --- Testbench Wishbone ---
-../../dv/tb_wishbone.sv
