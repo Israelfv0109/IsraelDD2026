@@ -24,6 +24,11 @@ module mac_tb;
         forever #5 clk = ~clk;
     end
 
+    initial begin
+        $shm_open("shm_db"); // Simvision
+        $shm_probe("AS");    // Simvision
+    end
+
     // Instancia de Interfaz y DUT
     mac_if if_i(clk, rst_n);
     mac_top dut (
